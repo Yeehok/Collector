@@ -23,8 +23,14 @@
     for (int i = 0; i < 5; i++) {
         [[DataItemStore getInstance] createItem];
     }
+    CGRect headerRect = CGRectMake(0, 0, self.view.bounds.size.width, 60);
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds
+    UIView *headerView = [[UIView alloc] initWithFrame:headerRect];
+    headerView.backgroundColor = [UIColor darkGrayColor];
+    [self.view addSubview:headerView];
+    
+    CGRect tableect = CGRectMake(0, 60, self.view.bounds.size.width, self.view.bounds.size.height);
+    self.tableView = [[UITableView alloc] initWithFrame:tableect
                                                   style:UITableViewStylePlain];
     
     self.tableView.dataSource = self;

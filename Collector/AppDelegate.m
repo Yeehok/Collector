@@ -19,10 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    CGRect frame = [[UIScreen mainScreen] bounds];
-    frame.origin.y = 20;
-    
-    self.window = [[UIWindow alloc] initWithFrame:frame];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     ItemListViewController *vc = [[ItemListViewController alloc] init];
     self.window.rootViewController = vc;
