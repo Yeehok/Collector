@@ -6,7 +6,8 @@
 //  Copyright © 2016年 Yeehok. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "UIBase.h"
+
 #import "DataItemGroup.h"
 
 @interface DataItemModel : NSObject

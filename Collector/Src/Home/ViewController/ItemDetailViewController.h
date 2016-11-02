@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Yeehok. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "UIBase.h"
 
 @interface ItemDetailViewController : UIViewController
 

@@ -7,6 +7,7 @@
 //
 
 #import "ItemListViewController.h"
+
 #import "DataItemModel.h"
 #import "Masonry.h"
 
@@ -26,43 +27,32 @@
     
     [self.model createGroupWithInitialiseItem:[[DataItem alloc] initWithItemName:@"Black"
                                                                         itemType:@"Sweater"
-                                                                       itemImage:[UIImage imageNamed:@"testimg.png"]
                                                                      lastUseTime:[NSDate date]
                                                                       infomation:@"1"]];
     [((DataItemGroup *)self.model.allGroups[0]) addObject:[[DataItem alloc] initWithItemName:@"white"
                                                                                     itemType:@"Sweater"
-                                                                                   itemImage:[UIImage imageNamed:@"testimg.png"]
                                                                                  lastUseTime:[NSDate date]
                                                                                   infomation:@"2"]];
     [((DataItemGroup *)self.model.allGroups[0]) addObject:[[DataItem alloc] initWithItemName:@"color"
                                                                                     itemType:@"Sweater"
-                                                                                   itemImage:[UIImage imageNamed:@"testimg.png"]
                                                                                  lastUseTime:[NSDate date]
                                                                                   infomation:@"3"]];
     
     [self.model createGroupWithInitialiseItem:[[DataItem alloc] initWithItemName:@"Thin blue"
                                                                         itemType:@"Jeans"
-                                                                       itemImage:[UIImage imageNamed:@"testimg.png"]
                                                                      lastUseTime:[NSDate date]
                                                                       infomation:@"4"]];
     
     [self.model createGroupWithInitialiseItem:[[DataItem alloc] initWithItemName:@"Select dark blue"
                                                                         itemType:@"Coats"
-                                                                       itemImage:[UIImage imageNamed:@"testimg.png"]
                                                                      lastUseTime:[NSDate date]
                                                                       infomation:@"7"]];
     [((DataItemGroup *)self.model.allGroups[2]) addObject:[[DataItem alloc] initWithItemName:@"OnePiece black"
                                                                                     itemType:@"Coats"
-                                                                                   itemImage:[UIImage imageNamed:@"testimg.png"]
                                                                                  lastUseTime:[NSDate date]
                                                                                   infomation:@"8"]];
     
     self.imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"testimg"]];
-}
-
-- (void)pushbutton {
-    NSLog(@"%@\n", ((DataItem *)((DataItemGroup *)self.model.allGroups[0]).allItems[0]).modelData);
-    
 }
 
 - (void)viewDidLoad {
@@ -70,16 +60,11 @@
     
     [self loadData];
     
-//    CGRect headerRect = CGRectMake(0, 0, self.view.bounds.size.width, STATUSBARHEIGHT + HEADERVIEWHEIGHT);
+    self.headerBar = [[UIToolbar alloc] init];
+    self.headerBar.translucent = YES;
     
-    self.headerBar = [[UIToolbar alloc] init];//WithFrame:headerRect];
-    
-//    CGRect tableRect = CGRectMake(0, STATUSBARHEIGHT + HEADERVIEWHEIGHT, self.view.bounds.size.width, self.view.bounds.size.height);
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero
                                                   style:UITableViewStyleGrouped];
-    
-//    self.headerBar.translatesAutoresizingMaskIntoConstraints = NO;
-//    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -92,11 +77,9 @@
     [btn setTitle:@"Test" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn setBackgroundColor:[UIColor lightGrayColor]];
-    [btn addTarget:self action:@selector(pushbutton) forControlEvents:UIControlEventTouchDown];
+//    [btn addTarget:self action:@selector(pushbutton) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:btn];
-    
     //
-    
     
     [self.headerBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left);
@@ -111,21 +94,6 @@
         make.top.equalTo(self.headerBar.mas_bottom);
         make.bottom.equalTo(self.view.mas_bottom);
     }];
-    
-//    NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[self.headerBar, self.tableView] forKeys:@[@"headerBar", @"tableView"]];
-//    
-//    NSArray *constraintThisViewV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[headerBar(==64)][tableView]|"
-//                                                                                     options:0
-//                                                                                     metrics:nil
-//                                                                                       views:dic];
-//    NSArray *constraintThisViewH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|"
-//                                                                           options:0
-//                                                                           metrics:nil
-//                                                                             views:[NSDictionary dictionaryWithObject:self.tableView forKey:@"tableView"]];
-//    
-//    [self.view addConstraints:constraintThisViewV];
-//    [self.view addConstraints:constraintThisViewH];
-    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -153,7 +121,6 @@
     DataItem *i = [t.allItems objectAtIndex:indexPath.row];
     cell.textLabel.text = i.itemName;
     cell.detailTextLabel.text = i.itemInfo;
-    cell.imageView.image = i.itemImage;
     
     NSLog(@"CELL信息：%@", cell);
     

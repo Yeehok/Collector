@@ -6,7 +6,8 @@
 //  Copyright © 2016年 Yeehok. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "UIBase.h"
+
 #import "DataItem.h"
 
 @interface DataItemGroup : NSObject
@@ -19,7 +20,5 @@
 - (void)insertObject:(DataItem *)item atIndex:(NSUInteger)index;
 
 - (void)removeObjectAtIndex:(NSUInteger)index;
-
-- (DataItem *)createItem;
 
 @end

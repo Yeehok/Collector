@@ -12,7 +12,6 @@
 
 - (instancetype)initWithItemName:(NSString *)name
                         itemType:(NSString *)type
-                       itemImage:(UIImage *)image
                      lastUseTime:(NSDate *)time
                       infomation:(NSString *)info {
     self = [super init];
@@ -20,7 +19,6 @@
     if (self) {
         _itemName = name;
         _itemType = type;
-        _itemImage = image;
         _lastUseTime = time;
         _itemInfo = info;
     }
@@ -33,7 +31,6 @@
                       infomation:(NSString *)info {
     return [self initWithItemName:name
                          itemType:type
-                        itemImage:[UIImage imageNamed:@"testimg.png"]
                       lastUseTime:[NSDate date]
                        infomation:info];
 }
@@ -42,19 +39,6 @@
     return [self initWithItemName:name
                          itemType:ITEMTYPENONE
                        infomation:@""];
-}
-
-- (NSDictionary *)modelData {
-    return [NSDictionary dictionaryWithObjects:@[self.itemName, self.itemType, self.itemImage, self.lastUseTime, self.itemInfo] forKeys:@[@"itemName" ,@"itemType" ,@"itemImage" ,@"lastUseTime" ,@"itemInfo"]];
-}
-
-+ (DataItem *)randomItem {
-    DataItem *item = [[self alloc] initWithItemName:@"item"
-                                           itemType:ITEMTYPENONE
-                                          itemImage:[UIImage imageNamed:@"testimg.png"]
-                                        lastUseTime:[NSDate date]
-                                         infomation:@"info"];
-    return item;
 }
 
 @end

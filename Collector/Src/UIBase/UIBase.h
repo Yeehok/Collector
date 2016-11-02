@@ -6,5 +6,10 @@
 //  Copyright © 2016年 Yeehok. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 #define STATUSBARHEIGHT 20
 #define HEADERVIEWHEIGHT 44
+
+#define ITEMTYPENONE @"none"

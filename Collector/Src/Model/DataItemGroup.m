@@ -42,18 +42,12 @@
     [self.items removeObjectAtIndex:index];
 }
 
-- (DataItem *)createItem {
-    DataItem *item = [DataItem randomItem];
-    [self.items addObject:item];
-    return item;
-}
-
 - (NSString *)currentType {
     if ([self.items count]) {
         NSString *type = ((DataItem *)[self.items firstObject]).itemType;
         return type;
     }
-    return @"no type!";
+    return @"error";
 }
 
 @end
