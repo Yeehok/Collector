@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "ItemListViewController.h"
 
+#import "ItemDetailViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -22,6 +24,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     ItemListViewController *vc = [[ItemListViewController alloc] init];
+//    ItemDetailViewController *vc = [[ItemDetailViewController alloc] init];
     self.window.rootViewController = vc;
     
     self.window.backgroundColor = [UIColor whiteColor];

@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABD5E75DC412C25E4DAD636D /* libPods-Collector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 774CB4F050358076E724FD62 /* libPods-Collector.a */; };
+		FF1CAA761DC3367A00638305 /* testimg.png in Resources */ = {isa = PBXBuildFile; fileRef = FF1CAA751DC3367A00638305 /* testimg.png */; };
+		FF5EEE321DC88EF1008C150E /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EEE311DC88EF1008C150E /* ItemDetailViewController.m */; };
+		FFC084141DC741E600EA887A /* DataItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC084131DC741E600EA887A /* DataItemModel.m */; };
 		FFE112F31DBA057F0045BE20 /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE112F21DBA057F0045BE20 /* DataItem.m */; };
 		FFE112F91DBA13610045BE20 /* ItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE112F81DBA13610045BE20 /* ItemListViewController.m */; };
-		FFE112FC1DBA142F0045BE20 /* DataItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE112FB1DBA142F0045BE20 /* DataItemStore.m */; };
+		FFE112FC1DBA142F0045BE20 /* DataItemGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE112FB1DBA142F0045BE20 /* DataItemGroup.m */; };
 		FFFDAD261DB84D9C00966CA5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFDAD251DB84D9C00966CA5 /* main.m */; };
 		FFFDAD291DB84D9C00966CA5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFDAD281DB84D9C00966CA5 /* AppDelegate.m */; };
 		FFFDAD311DB84D9C00966CA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFDAD301DB84D9C00966CA5 /* Assets.xcassets */; };
@@ -17,12 +21,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		403422E7E765410680AFCC12 /* Pods-Collector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Collector/Pods-Collector.debug.xcconfig"; sourceTree = "<group>"; };
+		774CB4F050358076E724FD62 /* libPods-Collector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Collector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0523666A5EBBCF57923D115 /* Pods-Collector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collector.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collector/Pods-Collector.release.xcconfig"; sourceTree = "<group>"; };
+		FF1CAA751DC3367A00638305 /* testimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = testimg.png; path = Resources/testimg.png; sourceTree = "<group>"; };
+		FF5EEE301DC88EF1008C150E /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemDetailViewController.h; path = Src/Home/ViewController/ItemDetailViewController.h; sourceTree = "<group>"; };
+		FF5EEE311DC88EF1008C150E /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemDetailViewController.m; path = Src/Home/ViewController/ItemDetailViewController.m; sourceTree = "<group>"; };
+		FFB7D4801DC218E0005240D1 /* UIBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBase.h; path = Src/UIBase/UIBase.h; sourceTree = "<group>"; };
+		FFC084121DC741E600EA887A /* DataItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataItemModel.h; path = Src/Model/DataItemModel.h; sourceTree = "<group>"; };
+		FFC084131DC741E600EA887A /* DataItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataItemModel.m; path = Src/Model/DataItemModel.m; sourceTree = "<group>"; };
 		FFE112F11DBA057F0045BE20 /* DataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataItem.h; path = Src/Model/DataItem.h; sourceTree = "<group>"; };
 		FFE112F21DBA057F0045BE20 /* DataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataItem.m; path = Src/Model/DataItem.m; sourceTree = "<group>"; };
 		FFE112F71DBA13610045BE20 /* ItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemListViewController.h; path = Src/Home/ViewController/ItemListViewController.h; sourceTree = "<group>"; };
 		FFE112F81DBA13610045BE20 /* ItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemListViewController.m; path = Src/Home/ViewController/ItemListViewController.m; sourceTree = "<group>"; };
-		FFE112FA1DBA142F0045BE20 /* DataItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataItemStore.h; path = Src/Model/DataItemStore.h; sourceTree = "<group>"; };
-		FFE112FB1DBA142F0045BE20 /* DataItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataItemStore.m; path = Src/Model/DataItemStore.m; sourceTree = "<group>"; };
+		FFE112FA1DBA142F0045BE20 /* DataItemGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataItemGroup.h; path = Src/Model/DataItemGroup.h; sourceTree = "<group>"; };
+		FFE112FB1DBA142F0045BE20 /* DataItemGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataItemGroup.m; path = Src/Model/DataItemGroup.m; sourceTree = "<group>"; };
 		FFFDAD211DB84D9C00966CA5 /* Collector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFDAD251DB84D9C00966CA5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFFDAD271DB84D9C00966CA5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -37,12 +50,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABD5E75DC412C25E4DAD636D /* libPods-Collector.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09A117C33FA8D65DB455F690 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				403422E7E765410680AFCC12 /* Pods-Collector.debug.xcconfig */,
+				A0523666A5EBBCF57923D115 /* Pods-Collector.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D6F980ED9516D4D85416D0FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				774CB4F050358076E724FD62 /* libPods-Collector.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFB7D47F1DC218BF005240D1 /* UIBase */ = {
+			isa = PBXGroup;
+			children = (
+				FFB7D4801DC218E0005240D1 /* UIBase.h */,
+			);
+			name = UIBase;
+			sourceTree = "<group>";
+		};
 		FFE112ED1DBA04790045BE20 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +96,7 @@
 		FFE112EE1DBA04910045BE20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FF1CAA751DC3367A00638305 /* testimg.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -64,6 +104,7 @@
 		FFE112EF1DBA04960045BE20 /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				FFB7D47F1DC218BF005240D1 /* UIBase */,
 				FFE112F51DBA12ED0045BE20 /* Home */,
 				FFE112F01DBA04B10045BE20 /* Model */,
 			);
@@ -75,8 +116,10 @@
 			children = (
 				FFE112F11DBA057F0045BE20 /* DataItem.h */,
 				FFE112F21DBA057F0045BE20 /* DataItem.m */,
-				FFE112FA1DBA142F0045BE20 /* DataItemStore.h */,
-				FFE112FB1DBA142F0045BE20 /* DataItemStore.m */,
+				FFE112FA1DBA142F0045BE20 /* DataItemGroup.h */,
+				FFE112FB1DBA142F0045BE20 /* DataItemGroup.m */,
+				FFC084121DC741E600EA887A /* DataItemModel.h */,
+				FFC084131DC741E600EA887A /* DataItemModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -100,6 +143,8 @@
 		FFE112F61DBA130C0045BE20 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FF5EEE301DC88EF1008C150E /* ItemDetailViewController.h */,
+				FF5EEE311DC88EF1008C150E /* ItemDetailViewController.m */,
 				FFE112F71DBA13610045BE20 /* ItemListViewController.h */,
 				FFE112F81DBA13610045BE20 /* ItemListViewController.m */,
 			);
@@ -111,6 +156,8 @@
 			children = (
 				FFFDAD231DB84D9C00966CA5 /* Collector */,
 				FFFDAD221DB84D9C00966CA5 /* Products */,
+				09A117C33FA8D65DB455F690 /* Pods */,
+				D6F980ED9516D4D85416D0FC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,9 +196,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFFDAD381DB84D9C00966CA5 /* Build configuration list for PBXNativeTarget "Collector" */;
 			buildPhases = (
+				0FF389EB5E70F26119C4FB00 /* [CP] Check Pods Manifest.lock */,
 				FFFDAD1D1DB84D9C00966CA5 /* Sources */,
 				FFFDAD1E1DB84D9C00966CA5 /* Frameworks */,
 				FFFDAD1F1DB84D9C00966CA5 /* Resources */,
+				5A225428AA5E861E7FC1C2F9 /* [CP] Embed Pods Frameworks */,
+				1DA5E36F94EDD32FE209A64A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -168,7 +218,7 @@
 		FFFDAD191DB84D9C00966CA5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Yeehok;
 				TargetAttributes = {
 					FFFDAD201DB84D9C00966CA5 = {
@@ -203,20 +253,71 @@
 			files = (
 				FFFDAD341DB84D9C00966CA5 /* LaunchScreen.storyboard in Resources */,
 				FFFDAD311DB84D9C00966CA5 /* Assets.xcassets in Resources */,
+				FF1CAA761DC3367A00638305 /* testimg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0FF389EB5E70F26119C4FB00 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1DA5E36F94EDD32FE209A64A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Collector/Pods-Collector-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A225428AA5E861E7FC1C2F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Collector/Pods-Collector-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FFFDAD1D1DB84D9C00966CA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFC084141DC741E600EA887A /* DataItemModel.m in Sources */,
 				FFFDAD291DB84D9C00966CA5 /* AppDelegate.m in Sources */,
+				FF5EEE321DC88EF1008C150E /* ItemDetailViewController.m in Sources */,
 				FFE112F91DBA13610045BE20 /* ItemListViewController.m in Sources */,
 				FFE112F31DBA057F0045BE20 /* DataItem.m in Sources */,
-				FFE112FC1DBA142F0045BE20 /* DataItemStore.m in Sources */,
+				FFE112FC1DBA142F0045BE20 /* DataItemGroup.m in Sources */,
 				FFFDAD261DB84D9C00966CA5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +354,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -301,6 +403,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -327,6 +430,7 @@
 		};
 		FFFDAD391DB84D9C00966CA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 403422E7E765410680AFCC12 /* Pods-Collector.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AGKAHQ3WXQ;
@@ -339,6 +443,7 @@
 		};
 		FFFDAD3A1DB84D9C00966CA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0523666A5EBBCF57923D115 /* Pods-Collector.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AGKAHQ3WXQ;

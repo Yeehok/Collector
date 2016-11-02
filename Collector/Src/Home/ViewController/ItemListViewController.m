@@ -7,51 +7,165 @@
 //
 
 #import "ItemListViewController.h"
-#import "DataItemStore.h"
+#import "DataItemModel.h"
+#import "Masonry.h"
 
 @interface ItemListViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) DataItemModel *model;
+@property (nonatomic, strong) UIImageView *imgView;
+@property (nonatomic, strong) UIToolbar *headerBar;
 
 @end
 
 @implementation ItemListViewController
 
+- (void)loadData {
+    self.model = [DataItemModel getInstance];
+    
+    [self.model createGroupWithInitialiseItem:[[DataItem alloc] initWithItemName:@"Black"
+                                                                        itemType:@"Sweater"
+                                                                       itemImage:[UIImage imageNamed:@"testimg.png"]
+                                                                     lastUseTime:[NSDate date]
+                                                                      infomation:@"1"]];
+    [((DataItemGroup *)self.model.allGroups[0]) addObject:[[DataItem alloc] initWithItemName:@"white"
+                                                                                    itemType:@"Sweater"
+                                                                                   itemImage:[UIImage imageNamed:@"testimg.png"]
+                                                                                 lastUseTime:[NSDate date]
+                                                                                  infomation:@"2"]];
+    [((DataItemGroup *)self.model.allGroups[0]) addObject:[[DataItem alloc] initWithItemName:@"color"
+                                                                                    itemType:@"Sweater"
+                                                                                   itemImage:[UIImage imageNamed:@"testimg.png"]
+                                                                                 lastUseTime:[NSDate date]
+                                                                                  infomation:@"3"]];
+    
+    [self.model createGroupWithInitialiseItem:[[DataItem alloc] initWithItemName:@"Thin blue"
+                                                                        itemType:@"Jeans"
+                                                                       itemImage:[UIImage imageNamed:@"testimg.png"]
+                                                                     lastUseTime:[NSDate date]
+                                                                      infomation:@"4"]];
+    
+    [self.model createGroupWithInitialiseItem:[[DataItem alloc] initWithItemName:@"Select dark blue"
+                                                                        itemType:@"Coats"
+                                                                       itemImage:[UIImage imageNamed:@"testimg.png"]
+                                                                     lastUseTime:[NSDate date]
+                                                                      infomation:@"7"]];
+    [((DataItemGroup *)self.model.allGroups[2]) addObject:[[DataItem alloc] initWithItemName:@"OnePiece black"
+                                                                                    itemType:@"Coats"
+                                                                                   itemImage:[UIImage imageNamed:@"testimg.png"]
+                                                                                 lastUseTime:[NSDate date]
+                                                                                  infomation:@"8"]];
+    
+    self.imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"testimg"]];
+}
+
+- (void)pushbutton {
+    NSLog(@"%@\n", ((DataItem *)((DataItemGroup *)self.model.allGroups[0]).allItems[0]).modelData);
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    for (int i = 0; i < 5; i++) {
-        [[DataItemStore getInstance] createItem];
-    }
-    CGRect headerRect = CGRectMake(0, 0, self.view.bounds.size.width, 60);
+    [self loadData];
     
-    UIView *headerView = [[UIView alloc] initWithFrame:headerRect];
-    headerView.backgroundColor = [UIColor darkGrayColor];
-    [self.view addSubview:headerView];
+//    CGRect headerRect = CGRectMake(0, 0, self.view.bounds.size.width, STATUSBARHEIGHT + HEADERVIEWHEIGHT);
     
-    CGRect tableect = CGRectMake(0, 60, self.view.bounds.size.width, self.view.bounds.size.height);
-    self.tableView = [[UITableView alloc] initWithFrame:tableect
-                                                  style:UITableViewStylePlain];
+    self.headerBar = [[UIToolbar alloc] init];//WithFrame:headerRect];
+    
+//    CGRect tableRect = CGRectMake(0, STATUSBARHEIGHT + HEADERVIEWHEIGHT, self.view.bounds.size.width, self.view.bounds.size.height);
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero
+                                                  style:UITableViewStyleGrouped];
+    
+//    self.headerBar.translatesAutoresizingMaskIntoConstraints = NO;
+//    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.headerBar];
     
-    [self.tableView registerClass:[UITableViewCell class]
-           forCellReuseIdentifier:@"UITableViewCell"];
+    //
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    [btn setTitle:@"Test" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setBackgroundColor:[UIColor lightGrayColor]];
+    [btn addTarget:self action:@selector(pushbutton) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:btn];
+    
+    //
+    
+    
+    [self.headerBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.top.equalTo(self.view.mas_top);
+        make.bottom.equalTo(self.view.mas_top).with.offset(64);
+    }];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.top.equalTo(self.headerBar.mas_bottom);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
+    
+//    NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[self.headerBar, self.tableView] forKeys:@[@"headerBar", @"tableView"]];
+//    
+//    NSArray *constraintThisViewV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[headerBar(==64)][tableView]|"
+//                                                                                     options:0
+//                                                                                     metrics:nil
+//                                                                                       views:dic];
+//    NSArray *constraintThisViewH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|"
+//                                                                           options:0
+//                                                                           metrics:nil
+//                                                                             views:[NSDictionary dictionaryWithObject:self.tableView forKey:@"tableView"]];
+//    
+//    [self.view addConstraints:constraintThisViewV];
+//    [self.view addConstraints:constraintThisViewH];
+    
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.model.allGroups count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[DataItemStore getInstance] allItems] count];
+    return [((DataItemGroup *)self.model.allGroups[section]).allItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"
-                                                            forIndexPath:indexPath];
-    cell.textLabel.text = [[[[DataItemStore getInstance] allItems] objectAtIndex:indexPath.row] itemName];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"UITableViewCell"];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    DataItemGroup *t = self.model.allGroups[indexPath.section];
+    DataItem *i = [t.allItems objectAtIndex:indexPath.row];
+    cell.textLabel.text = i.itemName;
+    cell.detailTextLabel.text = i.itemInfo;
+    cell.imageView.image = i.itemImage;
+    
+    NSLog(@"CELL信息：%@", cell);
     
     return cell;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return ((DataItemGroup *)self.model.allGroups[section]).type;
+}
+
+//- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+//    return @"the same FOOTER!";
+//}
 
 @end
