@@ -15,85 +15,28 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) DataItemModel *model;
-@property (nonatomic, strong) UIImageView *imgView;
-@property (nonatomic, strong) UIToolbar *headerBar;
 
 @end
 
 @implementation ItemListViewController
-
-- (void)loadData {
-    self.model = [DataItemModel getInstance];
-    
-    [self.model createGroupWithInitialiseItem:[[DataItem alloc] initWithItemName:@"Black"
-                                                                        itemType:@"Sweater"
-                                                                     lastUseTime:[NSDate date]
-                                                                      infomation:@"1"]];
-    [((DataItemGroup *)self.model.allGroups[0]) addObject:[[DataItem alloc] initWithItemName:@"white"
-                                                                                    itemType:@"Sweater"
-                                                                                 lastUseTime:[NSDate date]
-                                                                                  infomation:@"2"]];
-    [((DataItemGroup *)self.model.allGroups[0]) addObject:[[DataItem alloc] initWithItemName:@"color"
-                                                                                    itemType:@"Sweater"
-                                                                                 lastUseTime:[NSDate date]
-                                                                                  infomation:@"3"]];
-    
-    [self.model createGroupWithInitialiseItem:[[DataItem alloc] initWithItemName:@"Thin blue"
-                                                                        itemType:@"Jeans"
-                                                                     lastUseTime:[NSDate date]
-                                                                      infomation:@"4"]];
-    
-    [self.model createGroupWithInitialiseItem:[[DataItem alloc] initWithItemName:@"Select dark blue"
-                                                                        itemType:@"Coats"
-                                                                     lastUseTime:[NSDate date]
-                                                                      infomation:@"7"]];
-    [((DataItemGroup *)self.model.allGroups[2]) addObject:[[DataItem alloc] initWithItemName:@"OnePiece black"
-                                                                                    itemType:@"Coats"
-                                                                                 lastUseTime:[NSDate date]
-                                                                                  infomation:@"8"]];
-    
-    self.imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"testimg"]];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self loadData];
     
-    self.headerBar = [[UIToolbar alloc] init];
-    self.headerBar.translucent = YES;
+    [self buildNavigationBar];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero
-                                                  style:UITableViewStyleGrouped];
-    
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    
-    [self.view addSubview:self.tableView];
-    [self.view addSubview:self.headerBar];
+    [self buildTableView];
     
     //
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
     [btn setTitle:@"Test" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btn setBackgroundColor:[UIColor lightGrayColor]];
+    [btn setBackgroundColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.81 alpha:1.0]];
 //    [btn addTarget:self action:@selector(pushbutton) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:btn];
     //
-    
-    [self.headerBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left);
-        make.right.equalTo(self.view.mas_right);
-        make.top.equalTo(self.view.mas_top);
-        make.bottom.equalTo(self.view.mas_top).with.offset(64);
-    }];
-    
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left);
-        make.right.equalTo(self.view.mas_right);
-        make.top.equalTo(self.headerBar.mas_bottom);
-        make.bottom.equalTo(self.view.mas_bottom);
-    }];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -134,5 +77,67 @@
 //- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
 //    return @"the same FOOTER!";
 //}
+
+- (void)buildNavigationBar {
+
+self.navigationItem.title = @"Collector";
+    UIBarButtonItem *rButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                             target:nil
+                                                                             action:nil];
+    UIBarButtonItem *lButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+                                                                             target:nil
+                                                                             action:nil];
+    
+    self.navigationItem.leftBarButtonItem = lButton;
+    self.navigationItem.rightBarButtonItem = rButton;
+}
+
+- (void)buildTableView {
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero
+                                                  style:UITableViewStyleGrouped];
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self.view addSubview:self.tableView];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.top.equalTo(self.view.mas_top);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
+}
+
+- (void)loadData {
+    self.model = [DataItemModel getInstance];
+    
+    [self.model createGroupWithInitialiseItem:[[DataItem alloc] initWithItemName:@"Black"
+                                                                        itemType:@"Sweater"
+                                                                     lastUseTime:[NSDate date]
+                                                                      infomation:@"1"]];
+    [((DataItemGroup *)self.model.allGroups[0]) addObject:[[DataItem alloc] initWithItemName:@"white"
+                                                                                    itemType:@"Sweater"
+                                                                                 lastUseTime:[NSDate date]
+                                                                                  infomation:@"2"]];
+    [((DataItemGroup *)self.model.allGroups[0]) addObject:[[DataItem alloc] initWithItemName:@"color"
+                                                                                    itemType:@"Sweater"
+                                                                                 lastUseTime:[NSDate date]
+                                                                                  infomation:@"3"]];
+    
+    [self.model createGroupWithInitialiseItem:[[DataItem alloc] initWithItemName:@"Thin blue"
+                                                                        itemType:@"Jeans"
+                                                                     lastUseTime:[NSDate date]
+                                                                      infomation:@"4"]];
+    
+    [self.model createGroupWithInitialiseItem:[[DataItem alloc] initWithItemName:@"Select dark blue"
+                                                                        itemType:@"Coats"
+                                                                     lastUseTime:[NSDate date]
+                                                                      infomation:@"7"]];
+    [((DataItemGroup *)self.model.allGroups[2]) addObject:[[DataItem alloc] initWithItemName:@"OnePiece black"
+                                                                                    itemType:@"Coats"
+                                                                                 lastUseTime:[NSDate date]
+                                                                                  infomation:@"8"]];
+}
 
 @end
