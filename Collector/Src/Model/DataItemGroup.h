@@ -21,4 +21,6 @@
 
 - (void)removeObjectAtIndex:(NSUInteger)index;
 
+- (void)moveDataItemAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
+
 @end

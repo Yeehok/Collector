@@ -15,6 +15,10 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) DataItemModel *model;
+@property (nonatomic, strong) UIBarButtonItem *searchButton;
+@property (nonatomic, strong) UIBarButtonItem *editButton;
+@property (nonatomic, strong) UIBarButtonItem *addButton;
+@property (nonatomic, strong) UIBarButtonItem *doneButton;
 
 @end
 
@@ -28,20 +32,13 @@
     [self buildNavigationBar];
     
     [self buildTableView];
-    
-    //
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    [btn setTitle:@"Test" forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btn setBackgroundColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.81 alpha:1.0]];
-//    [btn addTarget:self action:@selector(pushbutton) forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:btn];
-    //
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleDefault;
 }
+
+#pragma mark Table view (delegate/data sources)
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.model.allGroups count];
@@ -78,19 +75,74 @@
 //    return @"the same FOOTER!";
 //}
 
-- (void)buildNavigationBar {
-
-self.navigationItem.title = @"Collector";
-    UIBarButtonItem *rButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
-                                                                             target:nil
-                                                                             action:nil];
-    UIBarButtonItem *lButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-                                                                             target:nil
-                                                                             action:nil];
-    
-    self.navigationItem.leftBarButtonItem = lButton;
-    self.navigationItem.rightBarButtonItem = rButton;
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        DataItemGroup *group = [[self.model allGroups] objectAtIndex:indexPath.section];
+        [group removeObjectAtIndex:indexPath.row];
+        
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        if ([[group allItems] count] == 0) {
+            [self.model removeGroup:group];
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section]
+                          withRowAnimation:UITableViewRowAnimationFade];
+        }
+        [self.tableView endUpdates];
+    }
 }
+
+//- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+//    if (sourceIndexPath.section != destinationIndexPath.section) {
+//        [self.tableView moveRowAtIndexPath:destinationIndexPath toIndexPath:sourceIndexPath];
+//        return;
+//    }
+//    DataItemGroup *group = [self.model.allGroups objectAtIndex:sourceIndexPath.section];
+//    [group moveDataItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+//}
+
+#pragma mark Navigation bar
+
+- (void)buildNavigationBar {
+    self.navigationItem.title = SOFTWARENAME;
+    
+    self.searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+                                                                      target:self
+                                                                      action:@selector(pushSearchButton)];
+    self.editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                    target:self
+                                                                    action:@selector(pushEditButton)];
+    self.addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                   target:self
+                                                                   action:@selector(pushAddButton)];
+    self.doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                    target:self
+                                                                    action:@selector(pushDoneButton)];
+    
+    self.navigationItem.leftBarButtonItem = self.searchButton;
+    self.navigationItem.rightBarButtonItem = self.editButton;
+}
+
+- (void)pushSearchButton {
+    
+}
+
+- (void)pushEditButton {
+    [self.tableView setEditing:YES animated:YES];
+    self.navigationItem.leftBarButtonItem = self.addButton;
+    self.navigationItem.rightBarButtonItem = self.doneButton;
+}
+
+- (void)pushAddButton {
+    
+}
+
+- (void)pushDoneButton {
+    [self.tableView setEditing:NO animated:YES];
+    self.navigationItem.leftBarButtonItem = self.searchButton;
+    self.navigationItem.rightBarButtonItem = self.editButton;
+}
+
+#pragma mark Table view build
 
 - (void)buildTableView {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero
@@ -108,6 +160,8 @@ self.navigationItem.title = @"Collector";
         make.bottom.equalTo(self.view.mas_bottom);
     }];
 }
+
+#pragma mark test
 
 - (void)loadData {
     self.model = [DataItemModel getInstance];

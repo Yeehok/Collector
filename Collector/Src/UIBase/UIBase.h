@@ -13,3 +13,4 @@
 #define HEADERVIEWHEIGHT 44
 
 #define ITEMTYPENONE @"none"
+#define SOFTWARENAME @"Collector"

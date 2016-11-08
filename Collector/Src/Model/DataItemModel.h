@@ -20,4 +20,6 @@
 
 - (void)createGroupWithInitialiseItem:(DataItem *)item;
 
+- (void)removeGroup:(DataItemGroup *)group;
+
 @end

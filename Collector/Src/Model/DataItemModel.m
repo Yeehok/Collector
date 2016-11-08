@@ -52,18 +52,22 @@ static DataItemModel *instance;
     [self.groups addObject:group];
 }
 
+- (void)removeGroup:(DataItemGroup *)group {
+    [self.groups removeObjectIdenticalTo:group];
+}
+
 - (NSArray *)allGroups {
-    [self checkEmptyGroup];
+//    [self checkEmptyGroup];
     return [self.groups copy];
 }
 
-- (void)checkEmptyGroup {
-    for (NSUInteger i = 0; i < [self.groups count]; i++) {
-        if ([((DataItemGroup *)self.groups[i]).allItems count] == 0) {
-            [self.groups removeObjectAtIndex:i];
-            i--;
-        }
-    }
-}
+//- (void)checkEmptyGroup {
+//    for (NSUInteger i = 0; i < [self.groups count]; i++) {
+//        if ([((DataItemGroup *)self.groups[i]).allItems count] == 0) {
+//            [self.groups removeObjectAtIndex:i];
+//            i--;
+//        }
+//    }
+//}
 
 @end
