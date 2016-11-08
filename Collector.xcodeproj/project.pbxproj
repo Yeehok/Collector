@@ -429,7 +429,6 @@
 			baseConfigurationReference = 403422E7E765410680AFCC12 /* Pods-Collector.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = AGKAHQ3WXQ;
 				INFOPLIST_FILE = Collector/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -445,7 +444,6 @@
 			baseConfigurationReference = A0523666A5EBBCF57923D115 /* Pods-Collector.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = AGKAHQ3WXQ;
 				INFOPLIST_FILE = Collector/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
