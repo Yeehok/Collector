@@ -7,9 +7,10 @@
 //
 
 #import "ItemListViewController.h"
+#import "Masonry.h"
 
 #import "DataItemModel.h"
-#import "Masonry.h"
+#import "ItemDetailViewController.h"
 
 @interface ItemListViewController ()
 
@@ -19,6 +20,7 @@
 @property (nonatomic, strong) UIBarButtonItem *editButton;
 @property (nonatomic, strong) UIBarButtonItem *addButton;
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
+@property (nonatomic, strong) ItemDetailViewController *detailViewController;
 
 @end
 
@@ -91,6 +93,14 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DataItem *currentItem = [[((DataItemGroup *)[[self.model allGroups] objectAtIndex:indexPath.section]) allItems] objectAtIndex:indexPath.row];
+    [self buildDetailViewController];
+    [self.detailViewController setCurrentItem:currentItem];
+    [self.navigationController pushViewController:self.detailViewController animated:YES];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 //- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
 //    if (sourceIndexPath.section != destinationIndexPath.section) {
 //        [self.tableView moveRowAtIndexPath:destinationIndexPath toIndexPath:sourceIndexPath];
@@ -133,13 +143,24 @@
 }
 
 - (void)pushAddButton {
+    [self buildDetailViewController];
+    [self.detailViewController setCurrentItem:nil];
     
+    [self pushDoneButton];
+    
+    [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
 
 - (void)pushDoneButton {
     [self.tableView setEditing:NO animated:YES];
     self.navigationItem.leftBarButtonItem = self.searchButton;
     self.navigationItem.rightBarButtonItem = self.editButton;
+}
+
+- (void)buildDetailViewController {
+    if (self.detailViewController == nil) {
+        self.detailViewController = [[ItemDetailViewController alloc] init];
+    }
 }
 
 #pragma mark Table view build

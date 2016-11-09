@@ -7,20 +7,34 @@
 //
 
 #import "ItemDetailViewController.h"
+#import "Masonry.h"
 
-#import <Masonry.h>
+#import "DataItemModel.h"
 
 @interface ItemDetailViewController ()
 
 @property (nonatomic, strong) UITextField *itemName;
 @property (nonatomic, strong) UITextField *itemInfo;
+@property (nonatomic, strong) DataItem *item;
+@property (nonatomic, strong) UIBarButtonItem *doneButton;
 
 @end
 
 @implementation ItemDetailViewController
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.view.backgroundColor = [UIColor whiteColor];
+        self.navigationItem.title = @"New";
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self buildNavigationBar];
     
     self.itemName = [[UITextField alloc] init];
     self.itemInfo = [[UITextField alloc] init];
@@ -33,16 +47,6 @@
     
     [self.view addSubview:self.itemName];
     [self.view addSubview:self.itemInfo];
-    
-    /*
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    [btn setTitle:@"Test" forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btn setBackgroundColor:[UIColor lightGrayColor]];
-    [btn addTarget:self action:@selector(pushbutton) forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:btn];
-    
-    */
     
     [self.itemName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@100);
@@ -58,6 +62,26 @@
         make.centerY.equalTo(self.view.mas_centerY).with.offset(-20);
     }];
     
+}
+
+#pragma mark Interface
+
+- (void)setCurrentItem:(DataItem *)item {
+    self.item = item;
+    self.navigationItem.title = (self.item == nil ? @"New" : [NSString stringWithFormat:@"%@ %@", self.item.itemName, self.item.itemType]);
+}
+
+#pragma mark Navigation bar
+
+- (void)buildNavigationBar {
+    self.doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                    target:self
+                                                                    action:@selector(pushDoneButton)];
+    self.navigationItem.rightBarButtonItem = self.doneButton;
+}
+
+- (void)pushDoneButton {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

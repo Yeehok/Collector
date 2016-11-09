@@ -8,6 +8,10 @@
 
 #import "UIBase.h"
 
+@class DataItem;
+
 @interface ItemDetailViewController : UIViewController
+
+- (void)setCurrentItem:(DataItem *)item;
 
 @end
