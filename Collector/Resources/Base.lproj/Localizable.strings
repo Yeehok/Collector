@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Collector
+
+  Created by Yeehok on 2016/11/9.
+  Copyright © 2016年 Yeehok. All rights reserved.
+*/
+
+itemTypeNone = "none";
+softwareName = "Collector";
+detailTitle = "Detail";
+
+itemName = "Name";
+itemTime = "Time";
+itemType = "Type";
+itemInfo = "Dtil";

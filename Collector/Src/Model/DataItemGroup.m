@@ -42,18 +42,6 @@
     [self.items removeObjectAtIndex:index];
 }
 
-- (void)moveDataItemAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
-    if (fromIndex == toIndex) {
-        return;
-    }
-    
-    DataItem *item = [self.items objectAtIndex:fromIndex];
-    
-    [self.items removeObjectAtIndex:fromIndex];
-    
-    [self.items insertObject:item atIndex:toIndex];
-}
-
 - (NSString *)currentType {
     if ([self.items count]) {
         NSString *type = ((DataItem *)[self.items firstObject]).itemType;

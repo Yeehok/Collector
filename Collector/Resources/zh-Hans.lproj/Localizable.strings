@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Collector
+
+  Created by Yeehok on 2016/11/9.
+  Copyright © 2016年 Yeehok. All rights reserved.
+*/
+
+itemTypeNone = "无类型";
+softwareName = "集刻";
+detailTitle = "详情";
+
+itemName = "名称";
+itemTime = "时间";
+itemType = "类型";
+itemInfo = "详情";

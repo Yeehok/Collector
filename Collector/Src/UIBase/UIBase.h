@@ -11,6 +11,3 @@
 
 #define STATUSBARHEIGHT 20
 #define HEADERVIEWHEIGHT 44
-
-#define ITEMTYPENONE @"none"
-#define SOFTWARENAME @"Collector"

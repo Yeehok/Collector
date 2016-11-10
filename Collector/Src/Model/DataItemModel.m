@@ -57,17 +57,7 @@ static DataItemModel *instance;
 }
 
 - (NSArray *)allGroups {
-//    [self checkEmptyGroup];
     return [self.groups copy];
 }
-
-//- (void)checkEmptyGroup {
-//    for (NSUInteger i = 0; i < [self.groups count]; i++) {
-//        if ([((DataItemGroup *)self.groups[i]).allItems count] == 0) {
-//            [self.groups removeObjectAtIndex:i];
-//            i--;
-//        }
-//    }
-//}
 
 @end

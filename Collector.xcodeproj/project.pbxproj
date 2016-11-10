@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		ABD5E75DC412C25E4DAD636D /* libPods-Collector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 774CB4F050358076E724FD62 /* libPods-Collector.a */; };
+		FF229FFD1DD3004B00FD1D3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF229FFF1DD3004B00FD1D3A /* Localizable.strings */; };
+		FF22A0061DD30F4D00FD1D3A /* gravatar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF22A0051DD30F4D00FD1D3A /* gravatar.png */; };
 		FF5EEE321DC88EF1008C150E /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EEE311DC88EF1008C150E /* ItemDetailViewController.m */; };
 		FFC084141DC741E600EA887A /* DataItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC084131DC741E600EA887A /* DataItemModel.m */; };
 		FFE112F31DBA057F0045BE20 /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE112F21DBA057F0045BE20 /* DataItem.m */; };
@@ -16,13 +18,16 @@
 		FFFDAD261DB84D9C00966CA5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFDAD251DB84D9C00966CA5 /* main.m */; };
 		FFFDAD291DB84D9C00966CA5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFDAD281DB84D9C00966CA5 /* AppDelegate.m */; };
 		FFFDAD311DB84D9C00966CA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFDAD301DB84D9C00966CA5 /* Assets.xcassets */; };
-		FFFDAD341DB84D9C00966CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFFDAD321DB84D9C00966CA5 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		403422E7E765410680AFCC12 /* Pods-Collector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Collector/Pods-Collector.debug.xcconfig"; sourceTree = "<group>"; };
 		774CB4F050358076E724FD62 /* libPods-Collector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Collector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0523666A5EBBCF57923D115 /* Pods-Collector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collector.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collector/Pods-Collector.release.xcconfig"; sourceTree = "<group>"; };
+		FF229FFE1DD3004B00FD1D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF22A0021DD3009800FD1D3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF22A0031DD300AA00FD1D3A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		FF22A0051DD30F4D00FD1D3A /* gravatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gravatar.png; path = Resources/gravatar.png; sourceTree = "<group>"; };
 		FF5EEE301DC88EF1008C150E /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemDetailViewController.h; path = Src/Home/ViewController/ItemDetailViewController.h; sourceTree = "<group>"; };
 		FF5EEE311DC88EF1008C150E /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemDetailViewController.m; path = Src/Home/ViewController/ItemDetailViewController.m; sourceTree = "<group>"; };
 		FFB7D4801DC218E0005240D1 /* UIBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBase.h; path = Src/UIBase/UIBase.h; sourceTree = "<group>"; };
@@ -39,7 +44,6 @@
 		FFFDAD271DB84D9C00966CA5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FFFDAD281DB84D9C00966CA5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FFFDAD301DB84D9C00966CA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FFFDAD331DB84D9C00966CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFFDAD351DB84D9C00966CA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +76,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FF22A0041DD30C0100FD1D3A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		FFB7D47F1DC218BF005240D1 /* UIBase */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,7 +97,6 @@
 				FFFDAD271DB84D9C00966CA5 /* AppDelegate.h */,
 				FFFDAD281DB84D9C00966CA5 /* AppDelegate.m */,
 				FFFDAD301DB84D9C00966CA5 /* Assets.xcassets */,
-				FFFDAD321DB84D9C00966CA5 /* LaunchScreen.storyboard */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -94,6 +104,8 @@
 		FFE112EE1DBA04910045BE20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FF22A0051DD30F4D00FD1D3A /* gravatar.png */,
+				FF229FFF1DD3004B00FD1D3A /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -131,6 +143,7 @@
 		FFE112F51DBA12ED0045BE20 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				FF22A0041DD30C0100FD1D3A /* Cell */,
 				FFE112F41DBA122B0045BE20 /* View */,
 				FFE112F61DBA130C0045BE20 /* ViewController */,
 			);
@@ -230,8 +243,9 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
+				"zh-Hans",
 			);
 			mainGroup = FFFDAD181DB84D9C00966CA5;
 			productRefGroup = FFFDAD221DB84D9C00966CA5 /* Products */;
@@ -248,8 +262,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFFDAD341DB84D9C00966CA5 /* LaunchScreen.storyboard in Resources */,
+				FF22A0061DD30F4D00FD1D3A /* gravatar.png in Resources */,
 				FFFDAD311DB84D9C00966CA5 /* Assets.xcassets in Resources */,
+				FF229FFD1DD3004B00FD1D3A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,12 +336,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FFFDAD321DB84D9C00966CA5 /* LaunchScreen.storyboard */ = {
+		FF229FFF1DD3004B00FD1D3A /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FFFDAD331DB84D9C00966CA5 /* Base */,
+				FF229FFE1DD3004B00FD1D3A /* Base */,
+				FF22A0021DD3009800FD1D3A /* en */,
+				FF22A0031DD300AA00FD1D3A /* zh-Hans */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Localizable.strings;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -336,6 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -373,7 +392,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -385,6 +404,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -416,7 +436,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -429,6 +449,7 @@
 			baseConfigurationReference = 403422E7E765410680AFCC12 /* Pods-Collector.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AGKAHQ3WXQ;
 				INFOPLIST_FILE = Collector/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -444,6 +465,7 @@
 			baseConfigurationReference = A0523666A5EBBCF57923D115 /* Pods-Collector.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AGKAHQ3WXQ;
 				INFOPLIST_FILE = Collector/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;

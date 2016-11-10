@@ -37,7 +37,7 @@
 
 - (instancetype)initWithItemName:(NSString *)name {
     return [self initWithItemName:name
-                         itemType:ITEMTYPENONE
+                         itemType:NSLocalizedString(@"itemTypeNone", nil)
                        infomation:@""];
 }
 

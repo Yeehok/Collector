@@ -13,10 +13,12 @@
 
 @interface ItemDetailViewController ()
 
-@property (nonatomic, strong) UITextField *itemName;
-@property (nonatomic, strong) UITextField *itemInfo;
+@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) DataItem *item;
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSMutableArray *generalArray;
+@property (nonatomic, strong) NSMutableArray *detailArray;
 
 @end
 
@@ -26,7 +28,6 @@
     self = [super init];
     if (self) {
         self.view.backgroundColor = [UIColor whiteColor];
-        self.navigationItem.title = @"New";
     }
     return self;
 }
@@ -36,31 +37,7 @@
     
     [self buildNavigationBar];
     
-    self.itemName = [[UITextField alloc] init];
-    self.itemInfo = [[UITextField alloc] init];
-    
-    self.itemName.backgroundColor = [UIColor grayColor];
-    self.itemInfo.backgroundColor = [UIColor grayColor];
-    
-    self.itemName.translatesAutoresizingMaskIntoConstraints = NO;
-    self.itemInfo.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [self.view addSubview:self.itemName];
-    [self.view addSubview:self.itemInfo];
-    
-    [self.itemName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@100);
-        make.height.equalTo(@20);
-        make.centerX.equalTo(self.view.mas_centerX);
-        make.centerY.equalTo(self.view.mas_centerY).with.offset(20);
-    }];
-    
-    [self.itemInfo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@100);
-        make.height.equalTo(@20);
-        make.centerX.equalTo(self.view.mas_centerX);
-        make.centerY.equalTo(self.view.mas_centerY).with.offset(-20);
-    }];
+    [self buildTableView];
     
 }
 
@@ -68,7 +45,6 @@
 
 - (void)setCurrentItem:(DataItem *)item {
     self.item = item;
-    self.navigationItem.title = (self.item == nil ? @"New" : [NSString stringWithFormat:@"%@ %@", self.item.itemName, self.item.itemType]);
 }
 
 #pragma mark Navigation bar
@@ -78,10 +54,70 @@
                                                                     target:self
                                                                     action:@selector(pushDoneButton)];
     self.navigationItem.rightBarButtonItem = self.doneButton;
+    self.navigationItem.title = NSLocalizedString(@"detailTitle", nil);
 }
 
 - (void)pushDoneButton {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark Table view
+
+- (void)buildTableView {
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    self.tableView.dataSource = self;
+    
+    [self.view addSubview:self.tableView];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.top.equalTo(self.view.mas_top);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
+    
+    self.dataSource = [[NSMutableArray alloc] init];
+    self.generalArray = [[NSMutableArray alloc] init];
+    self.detailArray = [[NSMutableArray alloc] init];
+    
+    UITableViewCell *itemNameCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil];
+    itemNameCell.textLabel.text = NSLocalizedString(@"itemName", nil);
+    itemNameCell.textLabel.textColor = [UIColor blackColor];
+    itemNameCell.detailTextLabel.text = @"";
+    [self.generalArray addObject:itemNameCell];
+    
+    UITableViewCell *itemTypeCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil];
+    itemTypeCell.textLabel.text = NSLocalizedString(@"itemType", nil);
+    itemTypeCell.textLabel.textColor = [UIColor blackColor];
+    itemTypeCell.detailTextLabel.text = @"";
+    [self.generalArray addObject:itemTypeCell];
+    
+    UITableViewCell *itemInfoCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil];
+    itemInfoCell.textLabel.text = NSLocalizedString(@"itemInfo", nil);
+    itemInfoCell.textLabel.textColor = [UIColor blackColor];
+    itemInfoCell.detailTextLabel.text = @"";
+    [self.detailArray addObject:itemInfoCell];
+    
+    [self.dataSource addObject:self.generalArray];
+    [self.dataSource addObject:self.detailArray];
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.dataSource count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[self.dataSource objectAtIndex:section] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [[self.dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewCell *cell = [[self.dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+//    cell.detailTextLabel = YES;
 }
 
 @end

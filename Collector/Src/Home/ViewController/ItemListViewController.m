@@ -62,9 +62,6 @@
     DataItemGroup *t = self.model.allGroups[indexPath.section];
     DataItem *i = [t.allItems objectAtIndex:indexPath.row];
     cell.textLabel.text = i.itemName;
-    cell.detailTextLabel.text = i.itemInfo;
-    
-    NSLog(@"CELL信息：%@", cell);
     
     return cell;
 }
@@ -97,23 +94,14 @@
     DataItem *currentItem = [[((DataItemGroup *)[[self.model allGroups] objectAtIndex:indexPath.section]) allItems] objectAtIndex:indexPath.row];
     [self buildDetailViewController];
     [self.detailViewController setCurrentItem:currentItem];
-    [self.navigationController pushViewController:self.detailViewController animated:YES];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
-
-//- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-//    if (sourceIndexPath.section != destinationIndexPath.section) {
-//        [self.tableView moveRowAtIndexPath:destinationIndexPath toIndexPath:sourceIndexPath];
-//        return;
-//    }
-//    DataItemGroup *group = [self.model.allGroups objectAtIndex:sourceIndexPath.section];
-//    [group moveDataItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
-//}
 
 #pragma mark Navigation bar
 
 - (void)buildNavigationBar {
-    self.navigationItem.title = SOFTWARENAME;
+    self.navigationItem.title = NSLocalizedString(@"softwareName", nil);
     
     self.searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
                                                                       target:self
@@ -166,8 +154,7 @@
 #pragma mark Table view build
 
 - (void)buildTableView {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero
-                                                  style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
