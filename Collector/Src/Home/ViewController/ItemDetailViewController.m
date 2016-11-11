@@ -10,11 +10,14 @@
 #import "Masonry.h"
 
 #import "DataItemModel.h"
+#import "ItemDetailViewCell.h"
 
 @interface ItemDetailViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) DataItem *item;
+@property (nonatomic, strong) UIBarButtonItem *backButton;
+@property (nonatomic, strong) UIBarButtonItem *editButton;
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) NSMutableArray *generalArray;
@@ -45,20 +48,55 @@
 
 - (void)setCurrentItem:(DataItem *)item {
     self.item = item;
+    
 }
 
 #pragma mark Navigation bar
 
 - (void)buildNavigationBar {
+    self.backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                    target:self
+                                                                    action:@selector(pushBackButton)];
+    self.editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                    target:self
+                                                                    action:@selector(pushEditButton)];
     self.doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                     target:self
                                                                     action:@selector(pushDoneButton)];
-    self.navigationItem.rightBarButtonItem = self.doneButton;
+    self.navigationItem.leftBarButtonItem = self.backButton;
+    self.navigationItem.rightBarButtonItem = self.editButton;
     self.navigationItem.title = NSLocalizedString(@"detailTitle", nil);
 }
 
-- (void)pushDoneButton {
+- (void)pushBackButton {
+    for (ItemDetailViewCell *i in self.generalArray) {
+        [i exitEditMode];
+    }
+    for (ItemDetailViewCell *i in self.detailArray) {
+        [i exitEditMode];
+    }
+    self.navigationItem.rightBarButtonItem = self.editButton;
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)pushEditButton {
+    for (ItemDetailViewCell *i in self.generalArray) {
+        [i enterEditMode];
+    }
+    for (ItemDetailViewCell *i in self.detailArray) {
+        [i enterEditMode];
+    }
+    self.navigationItem.rightBarButtonItem = self.doneButton;
+}
+
+- (void)pushDoneButton {
+    for (ItemDetailViewCell *i in self.generalArray) {
+        [i exitEditMode];
+    }
+    for (ItemDetailViewCell *i in self.detailArray) {
+        [i exitEditMode];
+    }
+    self.navigationItem.rightBarButtonItem = self.editButton;
 }
 
 #pragma mark Table view
@@ -80,22 +118,24 @@
     self.generalArray = [[NSMutableArray alloc] init];
     self.detailArray = [[NSMutableArray alloc] init];
     
-    UITableViewCell *itemNameCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil];
-    itemNameCell.textLabel.text = NSLocalizedString(@"itemName", nil);
-    itemNameCell.textLabel.textColor = [UIColor blackColor];
-    itemNameCell.detailTextLabel.text = @"";
+    ItemDetailViewCell *itemNameCell = [[ItemDetailViewCell alloc] init];
+    itemNameCell.title.text = NSLocalizedString(@"itemName", nil);
+    itemNameCell.currentText.text = @"1123";
     [self.generalArray addObject:itemNameCell];
     
-    UITableViewCell *itemTypeCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil];
-    itemTypeCell.textLabel.text = NSLocalizedString(@"itemType", nil);
-    itemTypeCell.textLabel.textColor = [UIColor blackColor];
-    itemTypeCell.detailTextLabel.text = @"";
+    ItemDetailViewCell *itemTypeCell = [[ItemDetailViewCell alloc] init];
+    itemTypeCell.title.text = NSLocalizedString(@"itemType", nil);
+    itemTypeCell.currentText.text = @"143124713894714";
     [self.generalArray addObject:itemTypeCell];
     
-    UITableViewCell *itemInfoCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil];
-    itemInfoCell.textLabel.text = NSLocalizedString(@"itemInfo", nil);
-    itemInfoCell.textLabel.textColor = [UIColor blackColor];
-    itemInfoCell.detailTextLabel.text = @"";
+    ItemDetailViewCell *itemTimeCell = [[ItemDetailViewCell alloc] init];
+    itemTimeCell.title.text = NSLocalizedString(@"itemTime", nil);
+    itemTimeCell.currentText.text = @"2016-11-11";
+    [self.generalArray addObject:itemTimeCell];
+    
+    ItemDetailViewCell *itemInfoCell = [[ItemDetailViewCell alloc] init];
+    itemInfoCell.title.text = NSLocalizedString(@"itemInfo", nil);
+    itemInfoCell.currentText.text = @"4312413414";
     [self.detailArray addObject:itemInfoCell];
     
     [self.dataSource addObject:self.generalArray];

@@ -7,10 +7,10 @@
 */
 
 itemTypeNone = "无类型";
-softwareName = "集刻";
+softwareName = "Collector";
 detailTitle = "详情";
 
 itemName = "名称";
 itemTime = "时间";
 itemType = "类型";
-itemInfo = "详情";
+itemInfo = "信息";

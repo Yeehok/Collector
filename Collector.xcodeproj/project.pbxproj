@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ABD5E75DC412C25E4DAD636D /* libPods-Collector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 774CB4F050358076E724FD62 /* libPods-Collector.a */; };
+		FF20F1861DD5B2A00026B9DD /* ItemDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF20F1851DD5B2A00026B9DD /* ItemDetailViewCell.m */; };
 		FF229FFD1DD3004B00FD1D3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF229FFF1DD3004B00FD1D3A /* Localizable.strings */; };
 		FF22A0061DD30F4D00FD1D3A /* gravatar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF22A0051DD30F4D00FD1D3A /* gravatar.png */; };
 		FF5EEE321DC88EF1008C150E /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EEE311DC88EF1008C150E /* ItemDetailViewController.m */; };
@@ -24,6 +25,8 @@
 		403422E7E765410680AFCC12 /* Pods-Collector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Collector/Pods-Collector.debug.xcconfig"; sourceTree = "<group>"; };
 		774CB4F050358076E724FD62 /* libPods-Collector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Collector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0523666A5EBBCF57923D115 /* Pods-Collector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collector.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collector/Pods-Collector.release.xcconfig"; sourceTree = "<group>"; };
+		FF20F1841DD5B2A00026B9DD /* ItemDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemDetailViewCell.h; path = Src/Home/Cell/ItemDetailViewCell.h; sourceTree = "<group>"; };
+		FF20F1851DD5B2A00026B9DD /* ItemDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemDetailViewCell.m; path = Src/Home/Cell/ItemDetailViewCell.m; sourceTree = "<group>"; };
 		FF229FFE1DD3004B00FD1D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF22A0021DD3009800FD1D3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF22A0031DD300AA00FD1D3A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -79,6 +82,8 @@
 		FF22A0041DD30C0100FD1D3A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				FF20F1841DD5B2A00026B9DD /* ItemDetailViewCell.h */,
+				FF20F1851DD5B2A00026B9DD /* ItemDetailViewCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				FFFDAD291DB84D9C00966CA5 /* AppDelegate.m in Sources */,
 				FF5EEE321DC88EF1008C150E /* ItemDetailViewController.m in Sources */,
 				FFE112F91DBA13610045BE20 /* ItemListViewController.m in Sources */,
+				FF20F1861DD5B2A00026B9DD /* ItemDetailViewCell.m in Sources */,
 				FFE112F31DBA057F0045BE20 /* DataItem.m in Sources */,
 				FFE112FC1DBA142F0045BE20 /* DataItemGroup.m in Sources */,
 				FFFDAD261DB84D9C00966CA5 /* main.m in Sources */,
