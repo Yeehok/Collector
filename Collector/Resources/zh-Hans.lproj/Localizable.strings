@@ -9,6 +9,7 @@
 itemTypeNone = "无类型";
 softwareName = "Collector";
 detailTitle = "详情";
+backToMain = "返回";
 
 itemName = "名称";
 itemTime = "时间";

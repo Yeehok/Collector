@@ -9,6 +9,7 @@
 itemTypeNone = "none";
 softwareName = "Collector";
 detailTitle = "Detail";
+backToMain = "Back";
 
 itemName = "Name";
 itemTime = "Time";

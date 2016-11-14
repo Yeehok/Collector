@@ -13,6 +13,8 @@
 
 @interface ItemDetailViewCell ()
 
+@property (nonatomic, strong) UILabel *title;
+@property (nonatomic, strong) UITextField *content;
 @property (nonatomic, assign) BOOL canEdit;
 
 @end
@@ -32,7 +34,7 @@
             make.width.equalTo(@90);
         }];
         
-        [self.currentText mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.content mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.title.mas_right);
             make.top.equalTo(self.contentView.mas_top);
             make.bottom.equalTo(self.contentView.mas_bottom);
@@ -45,14 +47,18 @@
 
 #pragma mark Interface
 
+- (void)getFocus {
+    [self.content becomeFirstResponder];
+}
+
 - (void)enterEditMode {
-    self.title.textColor = [UIColor blackColor];
+    self.content.textColor = [UIColor blackColor];
     self.canEdit = YES;
 }
 
 - (void)exitEditMode {
-    self.title.textColor = [UIColor darkGrayColor];
-    [self.currentText resignFirstResponder];
+    self.content.textColor = [UIColor grayColor];
+    [self.content resignFirstResponder];
     self.canEdit = NO;
 }
 
@@ -60,14 +66,14 @@
 
 - (void)buildLabel {
     self.title = [[UILabel alloc] init];
-    self.currentText = [[UITextField alloc] init];
-    self.currentText.delegate = self;
-    self.currentText.returnKeyType = UIReturnKeyDone;
+    self.content = [[UITextField alloc] init];
+    self.content.delegate = self;
+    self.content.returnKeyType = UIReturnKeyDone;
     
     [self exitEditMode];
     
     [self.contentView addSubview:self.title];
-    [self.contentView addSubview:self.currentText];
+    [self.contentView addSubview:self.content];
 }
 
 #pragma mark TextField delegate
@@ -77,8 +83,24 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self.currentText resignFirstResponder];
+    [self.content resignFirstResponder];
     return YES;
+}
+
+- (void)setTitleText:(NSString *)text {
+    self.title.text = text;
+}
+
+- (void)setContentText:(NSString *)text {
+    self.content.text = text;
+}
+
+- (NSString *)titleText {
+    return self.title.text;
+}
+
+- (NSString *)contentText {
+    return self.content.text;
 }
 
 @end

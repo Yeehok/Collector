@@ -12,11 +12,18 @@
 
 @interface ItemDetailViewCell : UITableViewCell <UITextFieldDelegate>
 
-@property (nonatomic, strong) UILabel *title;
-@property (nonatomic, strong) UITextField *currentText;
+- (void)getFocus;
 
 - (void)enterEditMode;
 
 - (void)exitEditMode;
+
+- (void)setTitleText:(NSString *)text;
+
+- (void)setContentText:(NSString *)text;
+
+- (NSString *)titleText;
+
+- (NSString *)contentText;
 
 @end

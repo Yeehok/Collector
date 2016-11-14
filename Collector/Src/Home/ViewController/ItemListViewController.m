@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIBarButtonItem *addButton;
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
 @property (nonatomic, strong) ItemDetailViewController *detailViewController;
+@property (nonatomic, assign) NSIndexPath* reloadIndexPath;
 
 @end
 
@@ -34,6 +35,15 @@
     [self buildNavigationBar];
     
     [self buildTableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.reloadIndexPath != nil) {
+        [self.tableView reloadRowsAtIndexPaths:@[self.reloadIndexPath]
+                              withRowAnimation:UITableViewRowAnimationNone];
+        self.reloadIndexPath = nil;
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -95,6 +105,7 @@
     [self buildDetailViewController];
     [self.detailViewController setCurrentItem:currentItem];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.reloadIndexPath = indexPath;
     [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
 
@@ -121,7 +132,6 @@
 }
 
 - (void)pushSearchButton {
-    
 }
 
 - (void)pushEditButton {
@@ -167,6 +177,7 @@
         make.top.equalTo(self.view.mas_top);
         make.bottom.equalTo(self.view.mas_bottom);
     }];
+    self.reloadIndexPath = nil;
 }
 
 #pragma mark test

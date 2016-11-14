@@ -11,6 +11,7 @@
 		FF20F1861DD5B2A00026B9DD /* ItemDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF20F1851DD5B2A00026B9DD /* ItemDetailViewCell.m */; };
 		FF229FFD1DD3004B00FD1D3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF229FFF1DD3004B00FD1D3A /* Localizable.strings */; };
 		FF22A0061DD30F4D00FD1D3A /* gravatar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF22A0051DD30F4D00FD1D3A /* gravatar.png */; };
+		FF54EEDF1DD993E20003EAB9 /* TimeCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54EEDE1DD993E20003EAB9 /* TimeCalculator.m */; };
 		FF5EEE321DC88EF1008C150E /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EEE311DC88EF1008C150E /* ItemDetailViewController.m */; };
 		FFC084141DC741E600EA887A /* DataItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC084131DC741E600EA887A /* DataItemModel.m */; };
 		FFE112F31DBA057F0045BE20 /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE112F21DBA057F0045BE20 /* DataItem.m */; };
@@ -31,6 +32,8 @@
 		FF22A0021DD3009800FD1D3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF22A0031DD300AA00FD1D3A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FF22A0051DD30F4D00FD1D3A /* gravatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gravatar.png; path = Resources/gravatar.png; sourceTree = "<group>"; };
+		FF54EEDD1DD993E20003EAB9 /* TimeCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeCalculator.h; path = Src/Model/TimeCalculator.h; sourceTree = "<group>"; };
+		FF54EEDE1DD993E20003EAB9 /* TimeCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeCalculator.m; path = Src/Model/TimeCalculator.m; sourceTree = "<group>"; };
 		FF5EEE301DC88EF1008C150E /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemDetailViewController.h; path = Src/Home/ViewController/ItemDetailViewController.h; sourceTree = "<group>"; };
 		FF5EEE311DC88EF1008C150E /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemDetailViewController.m; path = Src/Home/ViewController/ItemDetailViewController.m; sourceTree = "<group>"; };
 		FFB7D4801DC218E0005240D1 /* UIBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBase.h; path = Src/UIBase/UIBase.h; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				FFE112FB1DBA142F0045BE20 /* DataItemGroup.m */,
 				FFC084121DC741E600EA887A /* DataItemModel.h */,
 				FFC084131DC741E600EA887A /* DataItemModel.m */,
+				FF54EEDD1DD993E20003EAB9 /* TimeCalculator.h */,
+				FF54EEDE1DD993E20003EAB9 /* TimeCalculator.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFC084141DC741E600EA887A /* DataItemModel.m in Sources */,
+				FF54EEDF1DD993E20003EAB9 /* TimeCalculator.m in Sources */,
 				FFFDAD291DB84D9C00966CA5 /* AppDelegate.m in Sources */,
 				FF5EEE321DC88EF1008C150E /* ItemDetailViewController.m in Sources */,
 				FFE112F91DBA13610045BE20 /* ItemListViewController.m in Sources */,
