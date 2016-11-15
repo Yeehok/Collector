@@ -10,7 +10,7 @@
 
 @class DataItem;
 
-@interface ItemDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
+@interface ItemDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 - (void)setCurrentItem:(DataItem *)item;
 

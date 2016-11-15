@@ -12,6 +12,7 @@
 #import "DataItemModel.h"
 #import "ItemDetailViewCell.h"
 #import "TimeCalculator.h"
+#import "ItemDatePickerViewController.h"
 
 typedef enum : NSUInteger {
     TypeItemName,
@@ -24,12 +25,14 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) DataItem *item;
+@property (nonatomic, assign) BOOL canEdit;
 @property (nonatomic, strong) UIBarButtonItem *editButton;
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) NSMutableArray *generalArray;
 @property (nonatomic, strong) NSMutableArray *detailArray;
 @property (nonatomic, strong) TimeCalculator *time;
+@property (nonatomic, strong) ItemDatePickerViewController *datePickViewController;
 
 @end
 
@@ -38,14 +41,25 @@ typedef enum : NSUInteger {
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.view.backgroundColor = [UIColor whiteColor];
+        [self buildDataSource];
         self.time = [TimeCalculator getInstance];
+        //table view
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        //navigation bar
+        self.editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                        target:self
+                                                                        action:@selector(pushEditButton)];
+        self.doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                        target:self
+                                                                        action:@selector(pushDoneButton)];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [self buildNavigationBar];
     
@@ -103,15 +117,15 @@ typedef enum : NSUInteger {
     }
 }
 
+- (void)initDatePick {
+    if (self.datePickViewController == nil) {
+        self.datePickViewController = [[ItemDatePickerViewController alloc] init];
+    }
+}
+
 #pragma mark Navigation bar
 
 - (void)buildNavigationBar {
-    self.editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
-                                                                    target:self
-                                                                    action:@selector(pushEditButton)];
-    self.doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                    target:self
-                                                                    action:@selector(pushDoneButton)];
     self.navigationItem.rightBarButtonItem = self.editButton;
     self.navigationItem.title = NSLocalizedString(@"detailTitle", nil);
 }
@@ -123,8 +137,10 @@ typedef enum : NSUInteger {
     for (ItemDetailViewCell *i in self.detailArray) {
         [i enterEditMode];
     }
-    [((ItemDetailViewCell *)[self.generalArray objectAtIndex:0]) getFocus];
+//    [((ItemDetailViewCell *)[self.generalArray objectAtIndex:0]) getFocus];
     self.navigationItem.rightBarButtonItem = self.doneButton;
+    self.tableView.allowsSelection = YES;
+    self.canEdit = YES;
     [self.navigationItem setHidesBackButton:YES animated:YES];
 }
 
@@ -139,18 +155,20 @@ typedef enum : NSUInteger {
     [self saveDataToModelWithType:TypeItemType Index:1];
     [self saveDataToModelWithType:TypeItemTime Index:2];
     [self saveDataToModelWithType:TypeItemDetail Index:0];
+    
     self.navigationItem.rightBarButtonItem = self.editButton;
+    self.tableView.allowsSelection = NO;
+    self.canEdit = NO;
     [self.navigationItem setHidesBackButton:NO animated:YES];
 }
 
 #pragma mark Table view
 
 - (void)buildTableView {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     [self.view addSubview:self.tableView];
-    
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
@@ -158,6 +176,12 @@ typedef enum : NSUInteger {
         make.bottom.equalTo(self.view.mas_bottom);
     }];
     
+    self.tableView.allowsSelectionDuringEditing = NO;
+    self.tableView.allowsSelection = NO;
+    self.canEdit = NO;
+}
+
+- (void)buildDataSource {
     self.dataSource = [[NSMutableArray alloc] init];
     self.generalArray = [[NSMutableArray alloc] init];
     self.detailArray = [[NSMutableArray alloc] init];
@@ -184,7 +208,6 @@ typedef enum : NSUInteger {
     
     [self.dataSource addObject:self.generalArray];
     [self.dataSource addObject:self.detailArray];
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -200,8 +223,22 @@ typedef enum : NSUInteger {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [[self.dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-//    cell.detailTextLabel = YES;
+    if (self.canEdit == NO) {
+        return;
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ItemDetailViewCell *cell = [[self.dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    if (indexPath.row == 2) {
+        [self initDatePick];
+        [self presentViewController:self.datePickViewController
+                           animated:YES
+                         completion:^{
+                             NSLog(@"Setting date!");
+                         }];
+    }
+    else {
+        [cell getFocus];
+    }
 }
 
 @end

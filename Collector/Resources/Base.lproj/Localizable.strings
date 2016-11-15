@@ -10,6 +10,7 @@ itemTypeNone = "none";
 softwareName = "Collector";
 detailTitle = "Detail";
 backToMain = "Back";
+datePickerTitle = "Date Picker";
 
 itemName = "Name";
 itemTime = "Time";

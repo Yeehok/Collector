@@ -41,50 +41,23 @@
             make.width.equalTo(@200);
         }];
     }
-    
     return self;
 }
 
 #pragma mark Interface
 
 - (void)getFocus {
+    self.content.enabled = YES;
     [self.content becomeFirstResponder];
 }
 
 - (void)enterEditMode {
     self.content.textColor = [UIColor blackColor];
-    self.canEdit = YES;
 }
 
 - (void)exitEditMode {
     self.content.textColor = [UIColor grayColor];
     [self.content resignFirstResponder];
-    self.canEdit = NO;
-}
-
-#pragma mark Label
-
-- (void)buildLabel {
-    self.title = [[UILabel alloc] init];
-    self.content = [[UITextField alloc] init];
-    self.content.delegate = self;
-    self.content.returnKeyType = UIReturnKeyDone;
-    
-    [self exitEditMode];
-    
-    [self.contentView addSubview:self.title];
-    [self.contentView addSubview:self.content];
-}
-
-#pragma mark TextField delegate
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    return self.canEdit;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self.content resignFirstResponder];
-    return YES;
 }
 
 - (void)setTitleText:(NSString *)text {
@@ -101,6 +74,31 @@
 
 - (NSString *)contentText {
     return self.content.text;
+}
+
+#pragma mark Label
+
+- (void)buildLabel {
+    self.title = [[UILabel alloc] init];
+    self.content = [[UITextField alloc] init];
+    self.content.delegate = self;
+    self.content.returnKeyType = UIReturnKeyDone;
+    self.content.enabled = NO;
+    self.content.textColor = [UIColor grayColor];
+    
+    [self.contentView addSubview:self.title];
+    [self.contentView addSubview:self.content];
+}
+
+#pragma mark TextField delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.content resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.content.enabled = NO;
 }
 
 @end

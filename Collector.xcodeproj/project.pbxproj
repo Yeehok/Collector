@@ -13,6 +13,7 @@
 		FF22A0061DD30F4D00FD1D3A /* gravatar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF22A0051DD30F4D00FD1D3A /* gravatar.png */; };
 		FF54EEDF1DD993E20003EAB9 /* TimeCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = FF54EEDE1DD993E20003EAB9 /* TimeCalculator.m */; };
 		FF5EEE321DC88EF1008C150E /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5EEE311DC88EF1008C150E /* ItemDetailViewController.m */; };
+		FF62E0931DDAA0C6004A9484 /* ItemDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF62E0921DDAA0C6004A9484 /* ItemDatePickerViewController.m */; };
 		FFC084141DC741E600EA887A /* DataItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC084131DC741E600EA887A /* DataItemModel.m */; };
 		FFE112F31DBA057F0045BE20 /* DataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE112F21DBA057F0045BE20 /* DataItem.m */; };
 		FFE112F91DBA13610045BE20 /* ItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE112F81DBA13610045BE20 /* ItemListViewController.m */; };
@@ -36,6 +37,8 @@
 		FF54EEDE1DD993E20003EAB9 /* TimeCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeCalculator.m; path = Src/Model/TimeCalculator.m; sourceTree = "<group>"; };
 		FF5EEE301DC88EF1008C150E /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemDetailViewController.h; path = Src/Home/ViewController/ItemDetailViewController.h; sourceTree = "<group>"; };
 		FF5EEE311DC88EF1008C150E /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemDetailViewController.m; path = Src/Home/ViewController/ItemDetailViewController.m; sourceTree = "<group>"; };
+		FF62E0911DDAA0C6004A9484 /* ItemDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemDatePickerViewController.h; path = Src/Home/ViewController/ItemDatePickerViewController.h; sourceTree = "<group>"; };
+		FF62E0921DDAA0C6004A9484 /* ItemDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemDatePickerViewController.m; path = Src/Home/ViewController/ItemDatePickerViewController.m; sourceTree = "<group>"; };
 		FFB7D4801DC218E0005240D1 /* UIBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBase.h; path = Src/UIBase/UIBase.h; sourceTree = "<group>"; };
 		FFC084121DC741E600EA887A /* DataItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataItemModel.h; path = Src/Model/DataItemModel.h; sourceTree = "<group>"; };
 		FFC084131DC741E600EA887A /* DataItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataItemModel.m; path = Src/Model/DataItemModel.m; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 		FFE112F61DBA130C0045BE20 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FF62E0911DDAA0C6004A9484 /* ItemDatePickerViewController.h */,
+				FF62E0921DDAA0C6004A9484 /* ItemDatePickerViewController.m */,
 				FF5EEE301DC88EF1008C150E /* ItemDetailViewController.h */,
 				FF5EEE311DC88EF1008C150E /* ItemDetailViewController.m */,
 				FFE112F71DBA13610045BE20 /* ItemListViewController.h */,
@@ -334,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFC084141DC741E600EA887A /* DataItemModel.m in Sources */,
+				FF62E0931DDAA0C6004A9484 /* ItemDatePickerViewController.m in Sources */,
 				FF54EEDF1DD993E20003EAB9 /* TimeCalculator.m in Sources */,
 				FFFDAD291DB84D9C00966CA5 /* AppDelegate.m in Sources */,
 				FF5EEE321DC88EF1008C150E /* ItemDetailViewController.m in Sources */,

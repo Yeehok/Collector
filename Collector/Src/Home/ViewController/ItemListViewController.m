@@ -27,10 +27,30 @@
 
 @implementation ItemListViewController
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        
+        self.searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+                                                                          target:self
+                                                                          action:@selector(pushSearchButton)];
+        self.editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                        target:self
+                                                                        action:@selector(pushEditButton)];
+        self.addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                       target:self
+                                                                       action:@selector(pushAddButton)];
+        self.doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                        target:self
+                                                                        action:@selector(pushDoneButton)];
+        [self loadData];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self loadData];
     
     [self buildNavigationBar];
     
@@ -39,6 +59,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     if (self.reloadIndexPath != nil) {
         [self.tableView reloadRowsAtIndexPaths:@[self.reloadIndexPath]
                               withRowAnimation:UITableViewRowAnimationNone];
@@ -50,7 +71,22 @@
     return UIStatusBarStyleDefault;
 }
 
-#pragma mark Table view (delegate/data sources)
+#pragma mark Table view
+
+- (void)buildTableView {
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self.view addSubview:self.tableView];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.top.equalTo(self.view.mas_top);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
+    self.reloadIndexPath = nil;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.model.allGroups count];
@@ -113,25 +149,12 @@
 
 - (void)buildNavigationBar {
     self.navigationItem.title = NSLocalizedString(@"softwareName", nil);
-    
-    self.searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-                                                                      target:self
-                                                                      action:@selector(pushSearchButton)];
-    self.editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
-                                                                    target:self
-                                                                    action:@selector(pushEditButton)];
-    self.addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                   target:self
-                                                                   action:@selector(pushAddButton)];
-    self.doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                    target:self
-                                                                    action:@selector(pushDoneButton)];
-    
     self.navigationItem.leftBarButtonItem = self.searchButton;
     self.navigationItem.rightBarButtonItem = self.editButton;
 }
 
 - (void)pushSearchButton {
+    
 }
 
 - (void)pushEditButton {
@@ -155,29 +178,12 @@
     self.navigationItem.rightBarButtonItem = self.editButton;
 }
 
+#pragma mark Inner interface
+
 - (void)buildDetailViewController {
     if (self.detailViewController == nil) {
         self.detailViewController = [[ItemDetailViewController alloc] init];
     }
-}
-
-#pragma mark Table view build
-
-- (void)buildTableView {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-    
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    
-    [self.view addSubview:self.tableView];
-    
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left);
-        make.right.equalTo(self.view.mas_right);
-        make.top.equalTo(self.view.mas_top);
-        make.bottom.equalTo(self.view.mas_bottom);
-    }];
-    self.reloadIndexPath = nil;
 }
 
 #pragma mark test
